@@ -64,7 +64,7 @@ namespace Script.Game
             UniTaskCompletionSource<CombinedAbility> waitForExecute = new UniTaskCompletionSource<CombinedAbility>();
             _combatManager.GotoExecutionPhase(waitForExecute);
             CombinedAbility combatAbility = await waitForExecute.Task;
-            _combatManager.Execute(_combatManager.ActiveCombatant, combatAbility);
+            //_combatManager.Execute(_combatManager.ActiveCombatant, combatAbility);
         }
 
         private async UniTask EnemyPhase()
