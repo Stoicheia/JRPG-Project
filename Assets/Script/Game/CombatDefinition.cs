@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Script.Card;
 using Script.Entity;
 using UnityEngine;
 
@@ -8,6 +9,6 @@ namespace Script.Game
     public class CombatDefinition : ScriptableObject
     {
         public CombatTeam Team;
-        public List<Combatant> PlayerCombatants;
+        public List<CardData> Deck;
     }
 }

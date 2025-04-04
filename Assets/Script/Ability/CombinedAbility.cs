@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using Script.Entity;
+using Script.Game;
 using UnityEngine;
 
 namespace Cards
@@ -13,16 +15,23 @@ namespace Cards
             _abilityEffects = abilityEffects;
         }
         
-        public void Execute()
+        public void Execute(Combatant dealer, CombatManager combat)
         {
-            _abilityEffects.ForEach(abilityEffect => abilityEffect.Execute());
+            _abilityEffects.ForEach(abilityEffect => abilityEffect.Execute(dealer, combat));
         }
 
-        public string GetDescription()
+        public string GetDescription(Combatant dealer)
         {
             StringBuilder fullString = new StringBuilder();
-            _abilityEffects.ForEach(abilityEffect => fullString.Append(abilityEffect.GetDescription()));
-            return fullString.ToString().TrimEnd();
+            _abilityEffects.ForEach(abilityEffect => fullString.AppendLine(abilityEffect.GetDescription(dealer)));
+            if (fullString.Length > 0)
+            {
+                return fullString.ToString().TrimEnd();
+            }
+            else
+            {
+                return "No effect";
+            }
         }
     }
 }

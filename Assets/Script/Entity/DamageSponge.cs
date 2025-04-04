@@ -10,6 +10,7 @@ namespace Script.Entity
         
         [field: SerializeField] public int Health { get; set; }
         [field: SerializeField] public int MaxHealth { get; set; }
+        [field: SerializeField] public int Damage { get; set; }
 
         public void TakeDamage(int damage)
         {

@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using Script.Entity;
+using Script.Game;
+using UnityEngine;
 
 namespace Cards
 {
-    public abstract class AbilityEffect : ScriptableObject
+    [Serializable]
+    public abstract class AbilityEffect
     {
-        public abstract void Execute();
-        public abstract string GetDescription();
+        public abstract void Execute(Combatant dealer, CombatManager combat);
+        public abstract string GetDescription(Combatant dealer);
     }
 }
