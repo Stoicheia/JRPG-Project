@@ -11,6 +11,8 @@ namespace Script.Game
     {
         [SerializeField] private CombatManager _combatManager;
         [SerializeField] private UIController _ui;
+        [SerializeField] private RectTransform _winScreen;
+        [SerializeField] private RectTransform _loseScreen;
 
         private async void Start()
         {
@@ -19,6 +21,8 @@ namespace Script.Game
 
         public async UniTask<CombatResultType> PlayCombat()
         {
+            _combatManager.Enemy.Damage = 3;
+
             // Initialization
             _combatManager.LoadCombat();
             _combatManager.Deck.ShuffleDrawPile();
@@ -70,6 +74,7 @@ namespace Script.Game
         private async UniTask EnemyPhase()
         {
             int damage = _combatManager.Enemy.Damage;
+            _combatManager.Enemy.Damage += _combatManager.Enemy.DamageIncreasePerTurn;
             _ui.StartEnemyAttack(damage);
             await UniTask.WaitForSeconds(0.3f);
             _combatManager.ActiveCombatant.TakeDamage(damage);
@@ -80,11 +85,13 @@ namespace Script.Game
         {
             if (_combatManager.PlayerCombatants.Any(x => x.Health == 0))
             {
+                _loseScreen.gameObject.SetActive(true);
                 return CombatResultType.Defeat;
             }
 
             if (_combatManager.Enemy.Health <= 0)
             {
+                _winScreen.gameObject.SetActive(true);
                 return CombatResultType.Victory;
             }
 

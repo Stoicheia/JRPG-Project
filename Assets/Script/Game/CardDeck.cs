@@ -57,6 +57,12 @@ namespace Script.Game
             _hand.Remove(card);
         }
 
+        public void DiscardRandom()
+        {
+            Discard(_hand[Random.Range(0, _hand.Count)]);
+            TryDrawOne();
+        }
+
         public CardInstance TryDrawOne()
         {
             if (_drawPile.Count == 0)

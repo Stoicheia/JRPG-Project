@@ -13,6 +13,7 @@ namespace Cards.Specific_Ability_Effects
         public override void Execute(Combatant dealer, CombatManager combat)
         {
             dealer.Health += Amount;
+            dealer.Health = Math.Clamp(dealer.Health, 0, dealer.MaxHealth);
         }
 
         public override string GetDescription(Combatant dealer)

@@ -1,7 +1,6 @@
 ﻿using System;
 using Script.Game;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -11,15 +10,23 @@ namespace Script.Card
     public class CardRenderer : MonoBehaviour
     {
         public event Action<CardInstance> OnClick;
-        
-        [Header("Fields")] 
+
+        [Header("Fields")]
         [SerializeField] private TextMeshProUGUI _nameField;
         [SerializeField] private Image _spriteField;
         [SerializeField] private TextMeshProUGUI _descriptionField;
         [SerializeField] private Button _button;
-        [FormerlySerializedAs("_loadedCardData")]
-        [Header("State")] 
+
+        [Header("State")]
         [SerializeField] private CardInstance _loadedCardInstance;
+
+        // Reference to UIController to call ExecuteAbility
+        private UIController _uiController;
+
+        private void Awake()
+        {
+            _uiController = FindObjectOfType<UIController>(); // Finds UIController in scene
+        }
 
         private void OnEnable()
         {
@@ -57,6 +64,9 @@ namespace Script.Card
             if (_loadedCardInstance != null)
             {
                 OnClick?.Invoke(_loadedCardInstance);
+
+                // Trigger Execute logic programmatically
+                _uiController?.HandleClickExecute();
             }
         }
     }

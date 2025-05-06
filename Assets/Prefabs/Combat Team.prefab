@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 4974936274495068008}
   - component: {fileID: 7232781133344861465}
   m_Layer: 0
-  m_Name: Jack Jones
+  m_Name: Ethan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 3376486208524174268}
   - component: {fileID: 7932454508965644692}
   m_Layer: 0
-  m_Name: Nico Nii
+  m_Name: Kavika
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 997201704262068897}
   - component: {fileID: 3058591221353199771}
   m_Layer: 0
-  m_Name: Putin
+  m_Name: Olin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
